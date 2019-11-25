@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,12 @@
   <title>First Crud - JavaScript</title>
   <link rel="stylesheet" href="/style/style.css">
 </head>
+
 <body>
   <div>
     <div class="header">
       <button type="submit" id="singout" onclick="singOut()">Sair</button>
-      <button>Cadastrar Usuário</button>
+      <button onclick="redirectRegisterWithToken()">Cadastrar Usuário</button>
       <label for="">
         Id Usuário
       </label>
@@ -28,12 +30,12 @@
             <th>Deletar</th>
           </tr>
         </thead>
-        <tbody>
-
+        <tbody id="tbody">
         </tbody>
       </table>
     </div>
   </div>
   <script src="script/index.js"></script>
 </body>
+
 </html>

@@ -6,9 +6,9 @@ function carregar() {
   form.cpf.addEventListener('blur', validationCPF, false);
   form.email.addEventListener('blur', validationEmail, false);
   if (recuperarCookie("token") == null) {
-    form.addEventListener("submit", validarRegister)
+    window.location.href = "login.html"; //Redirecionar para a principal
   } else {
-    window.location.href = "index.html"; //Redirecionar para a principal
+    form.addEventListener("submit", validarRegister)
   }
 }
 
@@ -50,6 +50,7 @@ function recuperarCookie(nome) {
 
 function validarRegister(event) {
   event.preventDefault();
+  let token = recuperarCookie("token");
 
   let formulario = document.forms["register"];
   let fieldFullname = formulario.fullname;
@@ -72,20 +73,19 @@ function validarRegister(event) {
     "fullname": fullname
   };
 
-  fetch('http://138.197.78.0/sign-up', {
+  fetch('http://138.197.78.0/users', {
     method: 'POST',
     body: JSON.stringify(user),
     headers: {
-      "Content-type": "application/json; charset=UTF-8"
+      "Content-type": "application/json; charset=UTF-8",
+      "Authorization": token
     }
   })
     .then(resultado => {
-      if (resultado.status == "400") {
-        fieldUsername.addClassError;
-        alert("Usuário já existente");
+      if (resultado.status == "200") {
+        window.location.href = "index.html";
+        return resultado.json();
       }
-      window.location.href = "login.html";
-      return resultado.json();
     })
     .catch(error => {
       console.log(error);
@@ -101,6 +101,10 @@ function removeClassError(field) {
 }
 
 function validateEmail(email) {
+  // Primeiro caracter é letra
+  // Após primeiro caracter, aceitar letras, números, - _ .
+  // Após o @, ter somente letras
+  // Após o ponto 3 letras e opcionalmente outro ponto e duas letras
   let regex = /^[a-zA-Z][a-zA-Z0-9\_\-\.]+@[a-zA-Z]{3,}\.[a-zA-Z]{3}(\.[a-zA-Z]{2})?$/;
   return regex.test(email);
 }
@@ -119,6 +123,7 @@ function validationEmail() {
 }
 
 function validateCPF(cpf) {
+  // (000.444.566-66)
   let regex = /^\d{3}\d{3}\d{3}\d{2}$/;
   return regex.test(cpf);
 }
@@ -139,7 +144,7 @@ function validationCPF() {
 function validationForm(event) {
   console.log("validationForm");
 
-  validationCPF();
+  validationCPF();;
   validationEmail();
 
   event.preventDefault();

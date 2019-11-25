@@ -16,7 +16,6 @@
 }
 
 .content {
-  background-color: #fff;
   margin: 50px;
 }
 
@@ -65,12 +64,18 @@
 
 .box-login {
   width: 500px;
-  height: 400px;
+  height: 430px;
   background: #fff;
   border-radius: 10px;
   border: 2px solid #dfe4ea;
 }
 
+.register-label {
+  text-align: center; 
+  color: blue; 
+  font-weight: bold; 
+  font-size: larger;
+}
 body {
   margin: 0px;
   font-family: 'Courier New', Courier, monospace;
@@ -98,6 +103,7 @@ button {
   color: white;
   font-weight: bold;
   font-size: 20px;
+  align-items: center;
 }
 
 .button-double {

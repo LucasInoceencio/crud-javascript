@@ -24,8 +24,6 @@ function apagarCookie(nome) {
   document.cookie = nome = "=" + ";expires=" + data.toUTCString();
 }
 
-
-
 function recuperarCookie(nome) {
   let cookies = document.cookie;
   let first = cookies.indexOf(nome + "=");

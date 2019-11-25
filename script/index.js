@@ -14,9 +14,55 @@ function showData(result) {
   });
 }
 
+function redirectRegisterWithToken() {
+  window.location.href = "register-with-token.html";
+}
+
+function editUser(idObjeto) {
+  return console.log(idObjeto);
+}
+
+function confirmDeleteUser(idObjeto) {
+  if (window.confirm("Deseja realmente excluir o usuário?")) {
+    console.log("OK");
+    return deleteUser(idObjeto);
+  }
+}
+
+function deleteUser(idObjeto) {
+  console.log(idObjeto);
+  let token = recuperarCookie("token");
+  fetch(`http://138.197.78.0/users/${idObjeto}`, {
+    method: 'Delete',
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      "Authorization": token
+    }
+  })
+    .then(resultado => {
+      if (resultado.status == "403") {
+        alert("Acesso negado!");
+        window.location.href = "login.html";
+      }
+      if (resultado.status == "404") {
+        alert("Usuário não encontrado!");
+      }
+      if (resultado.status == "200") {
+        alert("Usuário deletado!");
+        window.location.reload(true);
+      }
+    })
+    .then(data => {
+      console.log(data);
+      showData(data);
+    })
+    .catch(error => {
+      console.log(error);
+    })
+}
+
 function createUser(objeto) {
-  let tbody = document.querySelector("table");
-  let fragment = document.createDocumentFragment();
+  let tbody = document.querySelector("#tbody");
   let tr = document.createElement("tr");
   let tdId = document.createElement("td");
   let tdName = document.createElement("td");
@@ -25,6 +71,14 @@ function createUser(objeto) {
   let tdDelete = document.createElement("td");
   let buttonEdit = document.createElement("button");
   let buttonDelete = document.createElement("button");
+
+  let attEdit = document.createAttribute("onclick");
+  attEdit.value = `editUser(${objeto.id});`;
+  buttonEdit.setAttributeNode(attEdit);
+
+  let attDelete = document.createAttribute("onclick");
+  attDelete.value = `confirmDeleteUser(${objeto.id});`;
+  buttonDelete.setAttributeNode(attDelete);
 
   tdId.textContent = objeto.id;
   tdName.textContent = objeto.fullname;
