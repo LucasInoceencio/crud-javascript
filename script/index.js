@@ -8,25 +8,63 @@ function carregar() {
   }
 }
 
+function showData(result) {
+  result.forEach(element => {
+    return createUser(element);
+  });
+}
+
+function createUser(objeto) {
+  let tbody = document.querySelector("table");
+  let fragment = document.createDocumentFragment();
+  let tr = document.createElement("tr");
+  let tdId = document.createElement("td");
+  let tdName = document.createElement("td");
+  let tdEmail = document.createElement("td");
+  let tdEdit = document.createElement("td");
+  let tdDelete = document.createElement("td");
+  let buttonEdit = document.createElement("button");
+  let buttonDelete = document.createElement("button");
+
+  tdId.textContent = objeto.id;
+  tdName.textContent = objeto.fullname;
+  tdEmail.textContent = objeto.email;
+  buttonEdit.textContent = "Editar";
+  buttonDelete.textContent = "Deletar";
+
+  tdEdit.appendChild(buttonEdit);
+  tdDelete.appendChild(buttonDelete);
+
+  tr.appendChild(tdId);
+  tr.appendChild(tdName);
+  tr.appendChild(tdEmail);
+  tr.appendChild(tdEdit);
+  tr.appendChild(tdDelete);
+
+  return tbody.appendChild(tr);
+}
+
 function loadData() {
   let token = recuperarCookie("token");
   fetch('http://138.197.78.0/users', {
     method: 'GET',
     headers: {
       "Content-type": "application/json; charset=UTF-8",
-      "Authentication": token
+      "Authorization": token
     }
   })
     .then(resultado => {
-      console.log("header", resultado.headers)
-      console.log("resultado", resultado)
       if (resultado.status == "403") {
         alert("Acesso negado!");
         window.location.href = "login.html";
       }
       if (resultado.status == "200") {
-        return resultado.json()
+        return resultado.json();
       }
+    })
+    .then(data => {
+      console.log(data);
+      showData(data);
     })
     .catch(error => {
       console.log(error);

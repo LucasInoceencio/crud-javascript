@@ -20,6 +20,10 @@ function redirectLogin() {
   window.location.href = "login.html";
 }
 
+function redirectIndex() {
+  window.location.href = "index.html";
+}
+
 function adicionarCookie(nome, valor, dias) {
   let data = new Date();
   data.setDate(data.getDate() + dias);
