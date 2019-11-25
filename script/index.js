@@ -18,8 +18,19 @@ function redirectRegisterWithToken() {
   window.location.href = "register-with-token.html";
 }
 
+function redirectEdit() {
+  window.location.href = "edit.html";
+}
+
+function adicionarCookie(nome, valor, dias) {
+  let data = new Date();
+  data.setDate(data.getDate() + dias);
+  document.cookie = nome + "=" + valor + ";expires=" + data.toUTCString();
+}
+
 function editUser(idObjeto) {
-  return console.log(idObjeto);
+  adicionarCookie("deleteUserById", idObjeto);
+  return redirectEdit();
 }
 
 function confirmDeleteUser(idObjeto) {
