@@ -5,10 +5,13 @@ function carregar() {
   form.addEventListener('submit', validationForm, false);
   form.cpf.addEventListener('blur', validationCPF, false);
   form.email.addEventListener('blur', validationEmail, false);
-  if (recuperarCookie("token") == null) {
-    let formulario = document.forms["register"];
-    formulario.addEventListener("submit", validarRegister);
-  } else {
+  // if (recuperarCookie("token") == null) {
+  //   let formulario = document.forms["register"];
+  //   formulario.addEventListener("submit", validarRegister);
+  // } else {
+  //   window.location.href = "index.html"; //Redirecionar para a principal
+  // }
+  if (recuperarCookie("token") != null) {
     window.location.href = "index.html"; //Redirecionar para a principal
   }
 }
@@ -77,8 +80,6 @@ function validarRegister(event) {
       }
     })
     .then(resultado => {
-      console.log("header", resultado.headers)
-      console.log("resultado", resultado)
       if (resultado.status == "400") {
         fieldUsername.addClassError;
         alert("Usuário já existente");

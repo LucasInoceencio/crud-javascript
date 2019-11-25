@@ -66,18 +66,15 @@ function validarLogin(event) {
       }
     })
     .then(resultado => {
-      console.log("header", resultado.headers)
-      console.log("resultado", resultado)
       if (resultado.status = "403") {
         addClassError(fieldUsername);
         addClassError(fieldPassword);
       }
       if (resultado.status == "200") {
-        console.log(resultado.headers);
         removeClassError(fieldUsername);
         removeClassError(fieldPassword);
-        console.log("Token", resultado.headers.get("Authorization"));
-        //window.location.href = "index.html";
+        adicionarCookie("token", resultado.headers.get("Authorization"));
+        window.location.href = "index.html";
       }
       return resultado.json()
     })

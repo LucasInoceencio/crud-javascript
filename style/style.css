@@ -1,7 +1,37 @@
+.header {
+  width: 95%;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+}
+
+.header button {
+  color: black;
+  width: 200px;
+  margin: 15px;
+}
+
+.header input {
+  width: 200px;
+}
+
+.content {
+  background-color: #fff;
+  margin: 50px;
+}
+
 .container {
   width: 100vw;
   height: 100vh;
-  background: #f4f4f4;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-register {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -14,6 +44,7 @@
   background: #fff;
   border-radius: 10px;
   border: 2px solid #dfe4ea;
+  margin: 50px 0 50px 0;
 }
 
 .box-edit {
@@ -35,6 +66,7 @@
 body {
   margin: 0px;
   font-family: 'Courier New', Courier, monospace;
+  background-color: #f4f4f4;
 }
 
 .left {
