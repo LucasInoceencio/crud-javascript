@@ -1,3 +1,32 @@
+body {
+  margin: 0px;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #f4f4f4;
+}
+
+input {
+  width: 95%;
+  height: 30px;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+button {
+  width: 95%;
+  height: 40px;
+  margin-top: 30px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  align-items: center;
+}
+
+h2 {
+  text-align: center;
+  padding-top: 20px;
+}
+
 .header {
   width: 95%;
   display: flex;
@@ -17,10 +46,6 @@
 
 .content {
   margin: 50px;
-}
-
-.content tr {
-  min-width: 50px;
 }
 
 .content button {
@@ -76,34 +101,12 @@
   font-weight: bold; 
   font-size: larger;
 }
-body {
-  margin: 0px;
-  font-family: 'Courier New', Courier, monospace;
-  background-color: #f4f4f4;
-}
+
 
 .left {
   margin-left: 20px;
   margin-top: 20px;
   ;
-}
-
-input {
-  width: 95%;
-  height: 30px;
-  border-radius: 5px;
-  padding-left: 10px;
-}
-
-button {
-  width: 95%;
-  height: 40px;
-  margin-top: 30px;
-  border-radius: 5px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  align-items: center;
 }
 
 .button-double {
@@ -139,11 +142,6 @@ button {
 
 .button-red:hover {
   background-color: #fc737e;
-}
-
-h2 {
-  text-align: center;
-  padding-top: 20px;
 }
 
 .error {
