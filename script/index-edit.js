@@ -17,6 +17,11 @@ function redirectIndex() {
   window.location.href = "index.html";
 }
 
+function apagarCookie(nome) {
+  let data = new Date("01/01/1970");
+  document.cookie = nome + "=" + ";expires=" + data.toUTCString();
+}
+
 function recuperarCookie(nome) {
   let cookies = document.cookie;
   let first = cookies.indexOf(nome + "=");
@@ -49,12 +54,12 @@ function loadData() {
   let token = recuperarCookie("token");
   let idUser = recuperarCookie("deleteUserById");
   fetch(`http://138.197.78.0/users/${idUser}`, {
-    method: 'GET',
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-      "Authorization": token
-    }
-  })
+      method: 'GET',
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        "Authorization": token
+      }
+    })
     .then(resultado => {
       if (resultado.status == "403") {
         alert("Acesso negado!");
@@ -94,13 +99,13 @@ function editRegister(event) {
   let token = recuperarCookie("token");
   let idUser = recuperarCookie("deleteUserById");
   fetch(`http://138.197.78.0/users/${idUser}`, {
-    method: 'PUT',
-    body: JSON.stringify(user),
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-      "Authorization": token
-    }
-  })
+      method: 'PUT',
+      body: JSON.stringify(user),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        "Authorization": token
+      }
+    })
     .then(resultado => {
       if (resultado.status == "403") {
         alert("Acesso não autorizado!");
@@ -171,4 +176,12 @@ function validationForm(event) {
   validationEmail();
 
   event.preventDefault();
+}
+
+function singOut() {
+  event.preventDefault();
+  apagarCookie("token");
+  if (recuperarCookie("token") == null) {
+    window.location.href = "login.html"; //Redirecionar para o login
+  }
 }

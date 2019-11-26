@@ -28,7 +28,7 @@ function adicionarCookie(nome, valor, dias) {
 
 function apagarCookie(nome) {
   let data = new Date("01/01/1970");
-  document.cookie = nome = "=" + ";expires=" + data.toUTCString();
+  document.cookie = nome + "=" + ";expires=" + data.toUTCString();
 }
 
 function recuperarCookie(nome) {
@@ -148,4 +148,12 @@ function validationForm(event) {
   validationEmail();
 
   event.preventDefault();
+}
+
+function singOut() {
+  event.preventDefault();
+  apagarCookie("token");
+  if (recuperarCookie("token") == null) {
+    window.location.href = "login.html"; //Redirecionar para o login
+  }
 }
