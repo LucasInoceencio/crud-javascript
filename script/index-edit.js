@@ -139,7 +139,7 @@ function validateEmail(email) {
 }
 
 function validationEmail() {
-  let field = document.forms['register'].email;
+  let field = document.forms['edit-user'].email;
   let inputEmail = field.value;
 
   if (inputEmail == null || inputEmail == '' || validateEmail(inputEmail) == false) {
@@ -157,7 +157,7 @@ function validateCPF(cpf) {
 }
 
 function validationCPF() {
-  let field = document.forms['register'].cpf;
+  let field = document.forms['edit-user'].cpf;
   let inputCPF = field.value;
 
   if (inputCPF == null || inputCPF == '' || validateCPF(inputCPF) == false) {

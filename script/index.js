@@ -78,6 +78,8 @@ function createUser(objeto) {
   let tdId = document.createElement("td");
   let tdName = document.createElement("td");
   let tdEmail = document.createElement("td");
+  let tdCpf = document.createElement("td");
+  let tdUser = document.createElement("td");
   let tdEdit = document.createElement("td");
   let tdDelete = document.createElement("td");
   let buttonEdit = document.createElement("button");
@@ -94,6 +96,8 @@ function createUser(objeto) {
   tdId.textContent = objeto.id;
   tdName.textContent = objeto.fullname;
   tdEmail.textContent = objeto.email;
+  tdCpf.textContent = objeto.cpf;
+  tdUser.textContent = objeto.username;
   buttonEdit.textContent = "Editar";
   buttonDelete.textContent = "Deletar";
 
@@ -103,6 +107,8 @@ function createUser(objeto) {
   tr.appendChild(tdId);
   tr.appendChild(tdName);
   tr.appendChild(tdEmail);
+  tr.appendChild(tdCpf);
+  tr.appendChild(tdUser)
   tr.appendChild(tdEdit);
   tr.appendChild(tdDelete);
 

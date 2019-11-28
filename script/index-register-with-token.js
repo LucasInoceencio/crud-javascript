@@ -8,7 +8,7 @@ function carregar() {
   if (recuperarCookie("token") == null) {
     window.location.href = "login.html"; //Redirecionar para a principal
   } else {
-    form.addEventListener("submit", validarRegister)
+    form.addEventListener("submit", validarRegister);
   }
 }
 
