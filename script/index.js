@@ -88,7 +88,7 @@ function createUser(objeto) {
   let attEdit = document.createAttribute("onclick");
   attEdit.value = `editUser(${objeto.id});`;
   buttonEdit.setAttributeNode(attEdit);
-
+  
   let attDelete = document.createAttribute("onclick");
   attDelete.value = `confirmDeleteUser(${objeto.id});`;
   buttonDelete.setAttributeNode(attDelete);
